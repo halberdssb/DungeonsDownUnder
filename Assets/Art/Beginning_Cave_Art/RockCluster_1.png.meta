@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 684aec6d45ae8d744833f8cc315a2863
+guid: 377735ab1f98c224283f6e8470735a7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7128414972055843060
-    second: Moss_2_0
+      213: -8125669257470470804
+    second: RockCluster_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Moss_2_0
+      name: RockCluster_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 117
-        height: 84
+        width: 361
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f0f6fc26a73de260800000000000000
-      internalID: 7128414972055843060
+      spriteID: c65192aacd2db3f80800000000000000
+      internalID: -8125669257470470804
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RockCluster_1_0: -8125669257470470804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
