@@ -1,5 +1,6 @@
 using Player.States;
 using UnityEngine;
+using UnityEngine.Splines.ExtrusionShapes;
 
 /*
  * Handles player states, including switching between states and calling proper state functions
@@ -16,7 +17,8 @@ namespace Player
 
         private BaseState _currentState;
         
-        private GroundState _groundState;
+        public GroundState groundState;
+        public AirState airState;
         
         #endregion
         
@@ -24,6 +26,13 @@ namespace Player
         public Data data;
         public Input input;
         public Movement movement;
+        public Rigidbody2D rb;
+        public BoxCollider2D environmentCollisionBox;
+        #endregion
+        
+        #region Public Variables
+
+        public bool isGrounded;
         #endregion
     
         private void Start()
@@ -31,7 +40,7 @@ namespace Player
             CreateStates();
             
             // default to ground state
-            SwitchState(_groundState);
+            SwitchState(groundState);
         }
 
         private void Update()
@@ -50,12 +59,15 @@ namespace Player
             _currentState?.ExitState();
             _currentState = newState;
             _currentState.EnterState();
+            
+            //Debug.Log("Current state: " + _currentState);
         }
     
         // Instantiates all states with player reference
         private void CreateStates()
         {
-            _groundState = new GroundState(this);
+            groundState = new GroundState(this);
+            airState = new AirState(this);
         }
     }
 }

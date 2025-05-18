@@ -28,8 +28,22 @@ namespace Player.States
 
         public override void FixedUpdateState()
         {
+            // ground movement
             player.movement.Run(player.input.DirectionalInput.x, player.data.moveSpeed, player.data.groundAccelValue, player.data.groundDecelValue);
-            player.movement.ApplyFriction(player.data.frictionValue);
+            player.movement.ApplyFriction(player.data.groundFriction);
+            
+            // check for jump buffer (check if y velocity is negative to prevent stacking jump inputs when first leaving ground)
+            if (player.input.IsJumpPressed || (player.movement.jumpPressedWhileAirborne && player.input.IsJumpHeld && player.movement.timeHoldingJump <= player.data.jumpBufferWindow))
+            {
+                player.movement.Jump(player.data.jumpForce);
+                player.SwitchState(player.airState);
+            }
+            
+            // check if not grounded (walked off of ledge)
+            if (!player.movement.CheckIfGrounded())
+            {
+                player.SwitchState(player.airState);
+            }
         }
 
         public override void ExitState()
