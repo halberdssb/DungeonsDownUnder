@@ -23,6 +23,8 @@ namespace Player
     
         private bool _isIgnitePressed;
         private bool _isIgniteHeld;
+
+        private bool _jumpHeldLastFrame;
         #endregion
     
         #region Public Variables (Getters)
@@ -63,6 +65,17 @@ namespace Player
         }
     
         #endregion
+        // checks initial value pressed (NOT held) bools - non-physics values should be checked in update
+        private void FixedUpdate()
+        {
+            // jump pressed 
+            if (_jumpHeldLastFrame)
+            {
+                _isJumpPressed = false;
+            }
+
+            _jumpHeldLastFrame = _isJumpHeld;
+        }
         
         #region Input Methods
         private void OnMove(InputValue value)
@@ -73,16 +86,19 @@ namespace Player
         private void OnJump(InputValue value)
         {
             _isJumpPressed = value.isPressed;
+            _isJumpHeld = value.isPressed;
         }
     
         private void OnAttack(InputValue value)
         {
-            _isAttackPressed = value.isPressed;   
+            _isAttackPressed = value.isPressed && !_isAttackHeld;
+            _isAttackHeld = value.isPressed;
         }
 
         private void OnIgnite(InputValue value)
         {
-            _isIgnitePressed = value.isPressed;
+            _isIgnitePressed = value.isPressed && !_isIgniteHeld;
+            _isIgniteHeld = value.isPressed;
         }
         #endregion
     }

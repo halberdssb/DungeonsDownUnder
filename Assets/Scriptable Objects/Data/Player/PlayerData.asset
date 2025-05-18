@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb322b7bb9cef00489a02098e8d78e4c, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 15
   groundAccelValue: 7
   groundDecelValue: 7
   velocityPower: 0.9
-  frictionValue: 0.2
+  groundFriction: 0.2
+  airFriction: 0.1
+  jumpForce: 18
+  jumpCutMultiplier: 0.8
+  coyoteTimeWindow: 0.07
+  jumpBufferWindow: 0.07
+  fallGravityModifier: 1.6
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
