@@ -6077,84 +6077,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &281622265
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 281622267}
-  - component: {fileID: 281622266}
-  m_Layer: 2
-  m_Name: Collider (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &281622266
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281622265}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 1
-  m_CompositeOrder: 0
-  m_Offset: {x: 13.92157, y: -1.0478613}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 48.75248, y: 6.538688}
-  m_EdgeRadius: 0
---- !u!4 &281622267
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281622265}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.34, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1643714901}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &287635364
 GameObject:
   m_ObjectHideFlags: 0
@@ -14773,6 +14695,7 @@ MonoBehaviour:
   movement: {fileID: 771681476}
   rb: {fileID: 771681481}
   environmentCollisionBox: {fileID: 916034907}
+  debugEnabled: 0
   isGrounded: 0
 --- !u!4 &771681479
 Transform:
@@ -25663,7 +25586,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 1
   m_CompositeOrder: 0
-  m_Offset: {x: 17.327114, y: 4.6405225}
+  m_Offset: {x: 43.648224, y: 4.640522}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25673,7 +25596,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 41.94139, y: 17.915455}
+  m_Size: {x: 94.58362, y: 17.915455}
   m_EdgeRadius: 0
 --- !u!4 &1340802420
 Transform:
@@ -33197,32 +33120,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1340802419}
     m_ColliderPaths:
-    - - X: 382978112
+    - - X: 909400320
         Y: 135982496
-      - X: -36435812
+      - X: -36435852
         Y: 135982496
-      - X: -36435812
-        Y: -43172048
-      - X: 382978112
-        Y: -43172048
-  - m_Collider: {fileID: 281622266}
-    m_ColliderPaths:
-    - - X: 786378112
-        Y: 22214828
-      - X: 298853312
-        Y: 22214828
-      - X: 298853312
+      - X: -36435852
         Y: -43172056
-      - X: 786378112
+      - X: 909400320
         Y: -43172056
   m_CompositePaths:
     m_Paths:
-    - - {x: 78.63778, y: -4.3172054}
-      - {x: 78.63778, y: 2.2214828}
-      - {x: 38.297813, y: 2.2215123}
-      - {x: 38.297783, y: 13.598249}
-      - {x: -3.6435812, y: 13.598221}
-      - {x: -3.643552, y: -4.317205}
+    - - {x: 90.94, y: -4.3172054}
+      - {x: 90.94, y: 13.598249}
+      - {x: -3.6435852, y: 13.598221}
+      - {x: -3.643556, y: -4.3172054}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -33268,7 +33179,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1340802420}
-  - {fileID: 281622267}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644512660

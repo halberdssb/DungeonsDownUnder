@@ -1,17 +1,10 @@
 using UnityEngine;
 
-/*
- * Handles when the player enters ignite in the air until they hit an obstacle
- *
- * Jeff Stevenson
- * 5.25.25
- */
-
 namespace Player.States
 {
-    public class IgniteAirState : BaseState
+    public class IgniteCooldownState : BaseState
     {
-        public IgniteAirState(StateController player)
+        public IgniteCooldownState(StateController player)
         {
             base.InitializeState(player);
         }
@@ -27,15 +20,6 @@ namespace Player.States
 
         public override void FixedUpdateState()
         {
-            // move laterally with ignite air values - do not apply friction here
-            player.movement.Run(player.input.LastHeldXDirection, player.data.igniteAirSpeed, player.data.igniteAirAccelValue, player.data.igniteAirDecelValue);
-            
-            // check if hit ground to exit state
-            if (player.movement.CheckIfGrounded())
-            {
-                player.SwitchState(player.groundState);
-                return;
-            }
             return;
         }
 
@@ -51,10 +35,6 @@ namespace Player.States
     
         public override void OnCollisionEnter(Collision collider)
         {
-            //if ((player.data.groundLayerMask & (1 << collider.gameObject.layer)) != 0)
-            //{
-            //    
-            //}
             return;
         }
     

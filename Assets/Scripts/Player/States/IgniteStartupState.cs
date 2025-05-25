@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /*
- * Handles when the player enters ignite in the air until they hit an obstacle
+ * Initial startup state when ignite is pressed that listens for ignite held or otherwise skips the charge state
  *
  * Jeff Stevenson
  * 5.25.25
@@ -9,33 +9,41 @@ using UnityEngine;
 
 namespace Player.States
 {
-    public class IgniteAirState : BaseState
+    public class IgniteStartupState : BaseState
     {
-        public IgniteAirState(StateController player)
+        private float startupTimer;
+        
+        public IgniteStartupState(StateController player)
         {
             base.InitializeState(player);
         }
+        
         public override void EnterState()
         {
+            startupTimer = player.data.igniteChargeActivationThreshold;
             return;
         }
 
         public override void UpdateState()
         {
-            return;
+            // switch to ignite air state if ignite is released
+            if (!player.input.IsIgniteHeld)
+            {
+                player.SwitchState(player.igniteAirState);
+                return;
+            }
+            // otherwise, increment timer and switch to ignite charge state once hold threshold is passed
+            if (startupTimer <= 0)
+            {
+                player.SwitchState(player.igniteChargeState);
+                return;
+            }
+            
+            startupTimer -= Time.deltaTime;
         }
 
         public override void FixedUpdateState()
         {
-            // move laterally with ignite air values - do not apply friction here
-            player.movement.Run(player.input.LastHeldXDirection, player.data.igniteAirSpeed, player.data.igniteAirAccelValue, player.data.igniteAirDecelValue);
-            
-            // check if hit ground to exit state
-            if (player.movement.CheckIfGrounded())
-            {
-                player.SwitchState(player.groundState);
-                return;
-            }
             return;
         }
 
@@ -44,6 +52,7 @@ namespace Player.States
             return;
         }
     
+        // Virtual methods - optional to include
         public override void InitializeState(StateController player)
         {
             this.player = player;
@@ -51,10 +60,6 @@ namespace Player.States
     
         public override void OnCollisionEnter(Collision collider)
         {
-            //if ((player.data.groundLayerMask & (1 << collider.gameObject.layer)) != 0)
-            //{
-            //    
-            //}
             return;
         }
     

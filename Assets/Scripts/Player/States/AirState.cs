@@ -14,6 +14,7 @@ namespace Player.States
     {
         private bool allowNewJumpInput;
         private bool enteredStateHoldingJump;
+        
         public AirState(StateController player)
         {
             base.InitializeState(player);
@@ -60,7 +61,8 @@ namespace Player.States
             // check for swap to ignite
             if (player.input.IsIgnitePressed)
             {
-                player.SwitchState(player.igniteAirState);    
+                player.SwitchState(player.igniteStartupState);
+                return;
             }
         }
 
@@ -88,6 +90,7 @@ namespace Player.States
             if (player.movement.CheckIfGrounded())
             {
                 player.SwitchState(player.groundState);
+                return;
             }
         }
 

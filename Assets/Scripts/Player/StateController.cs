@@ -20,6 +20,10 @@ namespace Player
         public GroundState groundState;
         public AirState airState;
         public IgniteAirState igniteAirState;
+        public IgniteChargeState igniteChargeState;
+        public IgniteBuriedState igniteBuriedState;
+        public IgniteCooldownState igniteCooldownState;
+        public IgniteStartupState igniteStartupState;
         
         #endregion
         
@@ -33,6 +37,10 @@ namespace Player
         
         #region Public Variables
 
+        [Header("Debug")] 
+        public bool debugEnabled;
+        
+        [HideInInspector]
         public bool isGrounded;
         #endregion
     
@@ -57,11 +65,16 @@ namespace Player
         // Switches to a new state, calling enter and exit as necessary
         public void SwitchState(BaseState newState)
         {
+            if (debugEnabled)
+            {
+                Debug.Log("Player exited state: " + _currentState);
+                Debug.Log("Player entered state: " + newState);
+            }
+
+            
             _currentState?.ExitState();
             _currentState = newState;
             _currentState.EnterState();
-            
-            //Debug.Log("Current state: " + _currentState);
         }
     
         // Instantiates all states with player reference
@@ -70,6 +83,10 @@ namespace Player
             groundState = new GroundState(this);
             airState = new AirState(this);
             igniteAirState = new IgniteAirState(this);
+            igniteChargeState = new IgniteChargeState(this);
+            igniteBuriedState = new IgniteBuriedState(this);
+            igniteCooldownState = new IgniteCooldownState(this);
+            igniteStartupState = new IgniteStartupState(this);
         }
     }
 }

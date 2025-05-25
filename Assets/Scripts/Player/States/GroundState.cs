@@ -37,12 +37,14 @@ namespace Player.States
             {
                 player.movement.Jump(player.data.jumpForce);
                 player.SwitchState(player.airState);
+                return;
             }
             
             // check if not grounded (walked off of ledge)
             if (!player.movement.CheckIfGrounded())
             {
                 player.SwitchState(player.airState);
+                return;
             }
         }
 
