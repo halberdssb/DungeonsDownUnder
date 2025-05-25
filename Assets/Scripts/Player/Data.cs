@@ -34,8 +34,38 @@ namespace Player
 
         #endregion
         
-        #region Checks
+        #region Ignite Data
+        [Space, Header("Ignite")]
+        [Tooltip("Max lateral speed while ignited in air")]
+        public float igniteAirSpeed;
+        
+        public float igniteAirAccelValue;
+        public float igniteAirDecelValue;
 
+        //public float igniteAirVelocityPower;
+
+        [Tooltip("Amount of time ignite must be held to trigger charge phase")]
+        public float igniteChargeActivationThreshold;
+
+        [Tooltip("Amount of time ignite launch can be aimed/charged for")]
+        public float igniteChargeTime;
+
+        [Tooltip("Deceleration rate for charge/aim slowdown")]
+        public float igniteChargeDeceleration;
+
+        [Tooltip("Amount of time to slow gravity to 0 in ignite charge state")]
+        public float igniteChargeComeToStopTime;
+
+        [Tooltip("Amount of time player is in cooldown after hitting ground from ignite")]
+        public float igniteCooldown;
+
+        [Tooltip("Amount of force the player is launched out of ignite charge state with")]
+        public float igniteLaunchForce;
+        
+        #endregion
+        
+        #region Checks
+        [Space, Header("Checks")]
         public LayerMask groundLayerMask;
 
         #endregion

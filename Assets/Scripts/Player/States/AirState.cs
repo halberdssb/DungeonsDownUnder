@@ -14,6 +14,7 @@ namespace Player.States
     {
         private bool allowNewJumpInput;
         private bool enteredStateHoldingJump;
+        
         public AirState(StateController player)
         {
             base.InitializeState(player);
@@ -56,13 +57,20 @@ namespace Player.States
             
             // increment coyote time timer
             player.movement.timeInAir += Time.deltaTime;
+            
+            // check for swap to ignite
+            if (player.input.IsIgnitePressed)
+            {
+                player.SwitchState(player.igniteStartupState);
+                return;
+            }
         }
 
         public override void FixedUpdateState()
         {
             // lateral movement
             player.movement.Run(player.input.DirectionalInput.x, player.data.moveSpeed, player.data.groundAccelValue, player.data.groundDecelValue);
-            player.movement.ApplyFriction(player.data.groundFriction);
+            player.movement.ApplyFriction(player.data.airFriction);
             
             // handle jump cut
             if (player.rb.linearVelocity.y > 0 && !player.input.IsJumpHeld)
@@ -82,6 +90,7 @@ namespace Player.States
             if (player.movement.CheckIfGrounded())
             {
                 player.SwitchState(player.groundState);
+                return;
             }
         }
 
