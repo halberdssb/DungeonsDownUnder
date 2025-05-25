@@ -34,8 +34,20 @@ namespace Player
 
         #endregion
         
-        #region Checks
+        #region Ignite Data
+        [Space, Header("Ignite")]
+        [Tooltip("Max lateral speed while ignited in air")]
+        public float igniteAirSpeed;
+        
+        public float igniteAirAccelValue;
+        public float igniteAirDecelValue;
 
+        public float igniteAirVelocityPower;
+        
+        #endregion
+        
+        #region Checks
+        [Space, Header("Checks")]
         public LayerMask groundLayerMask;
 
         #endregion

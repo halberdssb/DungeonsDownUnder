@@ -56,13 +56,19 @@ namespace Player.States
             
             // increment coyote time timer
             player.movement.timeInAir += Time.deltaTime;
+            
+            // check for swap to ignite
+            if (player.input.IsIgnitePressed)
+            {
+                player.SwitchState(player.igniteAirState);    
+            }
         }
 
         public override void FixedUpdateState()
         {
             // lateral movement
             player.movement.Run(player.input.DirectionalInput.x, player.data.moveSpeed, player.data.groundAccelValue, player.data.groundDecelValue);
-            player.movement.ApplyFriction(player.data.groundFriction);
+            player.movement.ApplyFriction(player.data.airFriction);
             
             // handle jump cut
             if (player.rb.linearVelocity.y > 0 && !player.input.IsJumpHeld)

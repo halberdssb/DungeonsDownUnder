@@ -75,7 +75,7 @@ namespace Player
         // Applies negative velocity force to player if jump released before apex of jump
         public void ApplyJumpCut()
         {
-            float jumpCutForce = rb.linearVelocity.y * (1 - player.data.jumpBufferWindow) * -1f;
+            float jumpCutForce = rb.linearVelocity.y * (1 - player.data.jumpCutMultiplier) * -1f;
             rb.AddForce(Vector3.up * jumpCutForce, ForceMode2D.Impulse);
         }
         

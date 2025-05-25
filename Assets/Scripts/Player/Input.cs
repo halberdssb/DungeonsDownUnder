@@ -14,6 +14,7 @@ namespace Player
     {
         #region Private Variables
         private Vector2 _directionalInput;
+        private float _lastHeldXDirection;
     
         private bool _isJumpPressed;
         private bool _isJumpHeld;
@@ -25,6 +26,9 @@ namespace Player
         private bool _isIgniteHeld;
 
         private bool _jumpHeldLastFrame;
+        private bool _igniteHeldLastFrame;
+        private bool _attackHeldLastFrame;
+        
         #endregion
     
         #region Public Variables (Getters)
@@ -32,6 +36,11 @@ namespace Player
         public Vector2 DirectionalInput
         {
             get { return _directionalInput; }
+        }
+
+        public float LastHeldXDirection
+        {
+            get { return _lastHeldXDirection; }
         }
 
         public bool IsJumpPressed
@@ -65,6 +74,33 @@ namespace Player
         }
     
         #endregion
+
+        // checks initial value pressed (NOT held) bools - physics values should be checked in fixedupdate
+        private void Update()
+        {
+            // ignite pressed 
+            if (_igniteHeldLastFrame)
+            {
+                _isIgnitePressed = false;
+            }
+
+            _igniteHeldLastFrame = _isIgniteHeld;
+            
+            // attack pressed
+            if (_attackHeldLastFrame)
+            {
+                _isAttackPressed = false;
+            }
+
+            _attackHeldLastFrame = _isAttackHeld;
+            
+            // handle last held x direction
+            if (_directionalInput.x != 0)
+            {
+                _lastHeldXDirection = Mathf.Sign(_directionalInput.x);
+            }
+        }
+        
         // checks initial value pressed (NOT held) bools - non-physics values should be checked in update
         private void FixedUpdate()
         {

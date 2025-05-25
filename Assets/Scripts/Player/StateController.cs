@@ -19,6 +19,7 @@ namespace Player
         
         public GroundState groundState;
         public AirState airState;
+        public IgniteAirState igniteAirState;
         
         #endregion
         
@@ -68,6 +69,7 @@ namespace Player
         {
             groundState = new GroundState(this);
             airState = new AirState(this);
+            igniteAirState = new IgniteAirState(this);
         }
     }
 }
