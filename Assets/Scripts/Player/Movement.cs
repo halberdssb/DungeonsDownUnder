@@ -40,7 +40,8 @@ namespace Player
         public void Run(float moveInput, float speed, float accelerationValue, float decelerationValue)
         {
             // find velocity we want to reach - either max speed in direction or 0 to stop
-            float targetVelocity = moveInput * speed;
+            float normalizedInput = moveInput != 0 ? Mathf.Sign(moveInput) : 0;
+            float targetVelocity = normalizedInput * speed;
         
             // calculate difference from desired velocity to current velocity
             float velocityDifference = targetVelocity - rb.linearVelocityX;

@@ -14,7 +14,7 @@ namespace Player.States
     {
         private float chargeTimer;
         private float previousGravityScale;
-
+        
         private Tween zeroVelocityTween;
         
         public IgniteChargeState(StateController player)
@@ -39,9 +39,10 @@ namespace Player.States
 
         public override void UpdateState()
         {
-            // exit if ignite is released or timer is up - if direction is held, launch in that direction
+            // exit if ignite is released or timer is up
             if (!player.input.IsIgniteHeld || chargeTimer <= 0f)
             {
+                // if direction is held, launch in that direction
                 if (player.input.DirectionalInput.sqrMagnitude > 0)
                 {
                     // need to kill stop tween to prevent it from overriding force
@@ -50,7 +51,7 @@ namespace Player.States
                     player.rb.AddForce(launchForce, ForceMode2D.Impulse);
                 }
                 
-                player.SwitchState(player.igniteAirState);
+                player.SwitchState(player.igniteLaunchState);
                 return;
             }
             
@@ -60,10 +61,7 @@ namespace Player.States
 
         public override void FixedUpdateState()
         {
-            // use run function to come to stop while aiming
-            //player.movement.Run(0f, 0f, player.data.igniteChargeDeceleration, player.data.igniteChargeDeceleration);
-            //player.movement.ApplyFriction(player.data.airFriction);
-            
+            return;
         }
 
         public override void ExitState()

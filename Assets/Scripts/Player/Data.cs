@@ -61,6 +61,9 @@ namespace Player
 
         [Tooltip("Amount of force the player is launched out of ignite charge state with")]
         public float igniteLaunchForce;
+
+        [Tooltip("Amount of time player is in launch state - gravity is suspended to create dash-like behavior")]
+        public float igniteLaunchStateTime;
         
         #endregion
         

@@ -26,12 +26,13 @@ MonoBehaviour:
   igniteAirSpeed: 30
   igniteAirAccelValue: 1
   igniteAirDecelValue: 0.7
-  igniteChargeActivationThreshold: 0.083333336
+  igniteChargeActivationThreshold: 0.1666667
   igniteChargeTime: 1.2
   igniteChargeDeceleration: 5
   igniteChargeComeToStopTime: 0.05
   igniteCooldown: 0.2
-  igniteLaunchForce: 17
+  igniteLaunchForce: 15
+  igniteLaunchStateTime: 0.1333333
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64

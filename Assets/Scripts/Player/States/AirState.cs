@@ -61,6 +61,7 @@ namespace Player.States
             // check for swap to ignite
             if (player.input.IsIgnitePressed)
             {
+                player.movement.ApplyJumpCut();
                 player.SwitchState(player.igniteStartupState);
                 return;
             }
@@ -102,5 +103,6 @@ namespace Player.States
 
             player.movement.timeInAir = 0f;
         }
+        
     }
 }

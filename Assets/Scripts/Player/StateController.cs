@@ -24,6 +24,7 @@ namespace Player
         public IgniteBuriedState igniteBuriedState;
         public IgniteCooldownState igniteCooldownState;
         public IgniteStartupState igniteStartupState;
+        public IgniteLaunchState igniteLaunchState;
         
         #endregion
         
@@ -87,6 +88,7 @@ namespace Player
             igniteBuriedState = new IgniteBuriedState(this);
             igniteCooldownState = new IgniteCooldownState(this);
             igniteStartupState = new IgniteStartupState(this);
+            igniteLaunchState = new IgniteLaunchState(this);
         }
     }
 }
